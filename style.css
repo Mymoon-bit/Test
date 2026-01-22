@@ -1,0 +1,50 @@
+body {
+  background:rgb(255, 255, 255);
+  color: rgb(255, 255, 255);
+  font-family: Arial;
+}
+
+.contenedor {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  background: rgb(0, 0, 0);
+}
+
+h1, h2 {
+  text-align: center;
+  color: #ffffff;
+}
+
+.pregunta {
+  border: 2px solid rgb(0, 0, 0);
+  padding: 15px;
+  background: #111;
+}
+
+.opcion {
+  display: block;
+  margin: 8px;
+}
+
+img {
+  max-width: 200px;
+  display: block;
+  margin: 10px auto;
+ 
+}
+
+video {
+  width: 100%;
+}
+body {
+  background-image: url("img/Pixel.jpg");
+  background-size: cover;
+   background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  margin: 0;
+  font-family: Arial;
+  color: white;
+ 
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Retro Gamer</title>
+
+  <!-- Vue 2 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app" class="contenedor">
+
+  <!-- INICIO -->
+  <div v-if="pantalla === 'inicio'">
+    <h1>𝐓𝐞𝐬𝐭 𝐑𝐞𝐭𝐫𝐨 𝐆𝐚𝐦𝐞𝐫👾</h1>
+    <p class="text-center">¿𝙌𝙪é 𝙩𝙖𝙣𝙩𝙤 𝙨𝙖𝙗𝙚𝙨 𝙙𝙚 𝙫𝙞𝙙𝙚𝙤𝙟𝙪𝙚𝙜𝙤𝙨 𝙧𝙚𝙩𝙧𝙤?</p>
+
+    <video controls>
+      <source src="video/galagaa.mp4" type="video/mp4">
+    </video>
+
+    <label>𝐓𝐮 𝐧𝐨𝐦𝐛𝐫𝐞🐉:</label>
+    <input type="text" class="form-control" v-model="nombre">
+
+    <button class="btn btn-success w-100 mt-3" @click="empezarTest">
+      Empezar
+    </button>
+  </div>
+
+  <!-- PREGUNTAS -->
+  <div v-if="pantalla === 'preguntas'">
+    <h2>Pregunta {{ indice + 1 }} / {{ preguntas.length }}</h2>
+
+    <div class="pregunta">
+      <p>{{ preguntas[indice].texto }}</p>
+
+      <img v-if="preguntas[indice].imagen" 
+           :src="preguntas[indice].imagen">
+         
+
+      <label class="opcion"
+        v-for="(op, i) in preguntas[indice].opciones"
+        :key="i">
+        <input type="radio" v-model="respuesta" :value="op.valor">
+        {{ op.texto }}
+      </label>
+
+      <button class="btn btn-primary mt-3"
+        @click="siguientePregunta">
+        Siguiente
+      </button>
+    </div>
+  </div>
+
+  <!-- RESULTADO -->
+  <div v-if="pantalla === 'resultado'">
+    <h1>Resultados 🦭</h1>
+    <p>Gracias {{ nombre }}</p>
+
+    <h2>Puntaje: {{ puntaje }}</h2>
+
+    <p v-if="puntaje <= 3">🤣 𝐉𝐀𝐉𝐀𝐉𝐀 𝐩𝐢𝐧𝐜𝐡𝐞 𝐛𝐨𝐭</p>
+    <p v-else-if="puntaje <= 7">👻𝐭𝐞 𝐟𝐚𝐥𝐭𝐚 𝐯𝐞𝐫 𝐦𝐚𝐬 𝐣𝐮𝐞𝐠𝐨𝐬 𝐚𝐩𝐚 𝐞𝐬𝐭𝐚 𝐛𝐢𝐞𝐧 𝐟𝐚𝐜𝐢𝐥</p>
+    <p v-else>🤖 𝐭𝐫𝐞𝐦𝐞𝐧𝐝𝐨 𝐢𝐝𝐨𝐥𝐨 𝐦𝐚𝐬𝐭𝐨𝐝𝐨𝐧𝐭𝐞 𝐟𝐢𝐞𝐫𝐚 𝐩𝐞𝐥𝐨 𝐞𝐧 𝐩𝐞𝐜𝐡𝐨 𝐞𝐥 𝐠𝐫𝐚𝐧 𝐂𝐇𝐀𝐓𝐆𝐏𝐓 𝐭𝐞 𝐝𝐢𝐜𝐞𝐧</p>
+
+    <video controls>
+      <source src="video/bomberman.mp4" type="video/mp4">
+    </video>
+
+    <button class="btn btn-warning w-100 mt-3"
+      @click="reiniciar">
+      quieres hacerlo denuevo?
+    </button>
+  </div>
+
+</div>
+
+<!-- JS -->
+<script src="app.js"></script>
+</body>
+</html>
